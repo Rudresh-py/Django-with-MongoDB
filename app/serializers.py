@@ -19,6 +19,8 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializers(serializers.ModelSerializer):
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+
     class Meta:
         model = Product
-        fields = ['name', 'attributes']
+        fields = ['name', 'attributes', 'user']
